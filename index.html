@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildfires</title>
+    <link rel="icon" href="images/logo-bg.png" />
+     <!-- Linking Google Font Link For Icons -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+     <!-- Font Awesome Icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 85px;
+  display: flex;
+  overflow-x: hidden;
+  flex-direction: column;
+  background: #161a2d;
+  padding: 25px 20px;
+  transition: all 0.4s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.sidebar:hover {
+  width: 260px;
+}
+
+.sidebar .sidebar-header {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .sidebar-header img {
+  width: 42px;
+}
+
+.sidebar .sidebar-header h2 {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  white-space: nowrap;
+  margin-left: 23px;
+}
+
+.sidebar-links h4 {
+  color: #fff;
+  font-weight: 500;
+  white-space: nowrap;
+  margin: 10px 0;
+  position: relative;
+}
+
+.sidebar-links h4 span {
+  opacity: 0;
+}
+
+.sidebar:hover .sidebar-links h4 span {
+  opacity: 1;
+}
+
+.sidebar-links .menu-separator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  transform: scaleX(1);
+  transform: translateY(-50%);
+  background: #4f52ba;
+  transform-origin: right;
+  transition-delay: 0.2s;
+}
+
+.sidebar:hover .sidebar-links .menu-separator {
+  transition-delay: 0s;
+  transform: scaleX(0);
+}
+
+.sidebar-links {
+  list-style: none;
+  margin-top: 20px;
+  height: 80%;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.sidebar-links::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar-links li a {
+  display: flex;
+  align-items: center;
+  gap: 0 20px;
+  color: #fff;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 15px 10px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.sidebar-links li a:hover {
+  color: #161a2d;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.sidebar-links li a.active {
+  color: #161a2d;
+  background: #fff;
+  border-radius: 4px;
+}
+
+#blink {  
+  animation-name:blink;
+  width:480px;
+  animation-duration:1s;
+  animation-timing-function:ease-in;
+  animation-iteration-count:Infinite;
+}
+
+@keyframes blink{
+  0%{color:black;}
+  50%{color:#FFEBEE;}
+  100%{color:black;}
+}
+
+
+main {
+  margin-left: 85px;
+  padding: 20px;
+  transition: margin-left 0.4s ease;
+}
+
+.sidebar:hover ~ main {
+  margin-left: 260px;
+}
+
+.center-text {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.center-text h1 {
+  font-family: 'Spantaran', sans-serif;
+  font-size: 75px;
+}
+
+.center-text h1 span:first-child {
+  color: #059927;
+}
+
+.center-text h1 span:last-child {
+  color: orangered;
+}
+
+.center-text p {
+  font-size: 18px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.center-text hr {
+  width: 15%;
+  border: none;
+  border-top: 5px solid dodgerblue;
+  margin-top: 7px;
+}
+
+.content-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.content-section .text1 {
+  width: 50%;
+  font-size: 21px;
+  font-weight: bold;
+  margin-right: 15px;
+  text-align: justify;
+}
+
+.content-section iframe {
+  margin-left: 15px;
+}
+
+.container1 {
+  margin-top: 50px;
+}
+
+.card-title {
+color: #262626;
+font-size: 1.5em;
+line-height: normal;
+font-weight: 700;
+margin-bottom: 0.5em;
+}
+
+.small-desc {
+font-size: 1em;
+font-weight: 400;
+line-height: 1.5em;
+color: #452c2c;
+}
+
+.small-desc {
+font-size: 1em;
+}
+
+.go-corner {
+display: flex;
+align-items: center;
+justify-content: center;
+position: absolute;
+width: 2em;
+height: 2em;
+overflow: hidden;
+top: 0;
+right: 0;
+background: linear-gradient(135deg, #6293c8, #384c6c);
+border-radius: 0 4px 0 32px;
+}
+
+.go-arrow {
+margin-top: -4px;
+margin-right: -4px;
+color: white;
+font-family: courier, sans;
+}
+
+.card {
+display: block;
+position: relative;
+max-width: 300px;
+height: 560px;
+background-color: #f2f8f9;
+border-radius: 10px;
+padding: 2em 1.2em;
+margin: 12px;
+text-decoration: none;
+z-index: 0;
+overflow: hidden;
+background: linear-gradient(to bottom, #c3e6ec, #a7d1d9);
+}
+
+.card1 {
+display: block;
+position: relative;
+max-width: 300px;
+height: 580px;
+background-color: #f2f8f9;
+border-radius: 10px;
+padding: 2em 1.2em;
+margin: 12px;
+text-decoration: none;
+z-index: 0;
+overflow: hidden;
+background: linear-gradient(to bottom, #c3e6ec, #a7d1d9);
+}
+
+.card:before, .card1:before {
+content: '';
+position: absolute;
+z-index: -1;
+top: -16px;
+right: -16px;
+background: linear-gradient(145deg, #364a60, #384c6c);
+height: 32px;
+width: 32px;
+border-radius: 32px;
+transform: scale(1);
+transform-origin: 45% 45%;
+transition: transform 0.35s ease-out;
+}
+
+.card:hover:before, .card1:hover:before {
+transform: scale(28);
+}
+
+.card:hover .small-desc, .card1:hover .small-desc {
+transition: all 0.5s ease-out;
+color: rgba(255, 255, 255, 0.8);
+}
+
+.card:hover .card-title , .card1:hover .card1-title{
+transition: all 0.5s ease-out;
+color: #ffffff;
+}
+
+.card45, .card46, .card47 {
+  width: 200px;
+  height: 300px;
+  border: none;
+  border-radius: 10px;
+  background-blend-mode: normal, normal, screen, overlay, normal;
+  box-shadow: 0px 0px 10px 1px #000000;
+  overflow: hidden; /* Ensure the image doesn't overflow the card */
+  position: relative; /* For absolute positioning of image */
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease; /* Smooth transition */
+  position: absolute; /* Position the image absolutely within the card */
+  top: 0;
+  left: 0;
+}
+
+.card45:hover .card-img, 
+.card46:hover .card-img, 
+.card47:hover .card-img {
+  transform: scale(1.1); /* Scale the image */
+}
+
+        .button {
+            display: flex;
+            justify-content: center;
+            gap: 160px;
+        }
+        .Cart {
+            background-color: #24cc06;
+            border-radius: 5px;
+            height: 35px;
+            width: 120px;
+            margin-top: 25px;
+            font-family: Ubuntu, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+
+}
+
+.contact-container {
+    width: 600px;
+    margin: 50px 20px;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.contact-container h1 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.contact-form .form-group {
+    margin-bottom: 15px;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #b3b3b3;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #575757;
+    outline: none;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #45a049;
+}
+    </style>
+</head>
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="logo-bg.png" alt="logo" />
+            <h2>Wild Fires</h2>
+        </div>
+        <ul class="sidebar-links">
+            <h4>
+                <span>Main Menu</span>
+                <div class="menu-separator"></div>
+            </h4>
+            <li>
+                <a href="#home" class="active" id="homeLink">
+                    <span class="material-symbols-outlined"> home </span>Home
+                </a>
+            </li>
+            <li>
+                <a href="#causes" id="causesLink">
+                    <i class="fa-solid fa-question" style="font-size: large; margin-left: 5px;"></i>Causes
+                </a>
+            </li>
+            <li>
+                <a href="#impact" id="impactLink">
+                    <i class="fa-solid fa-circle-check" style="font-size: large; margin-left: 2px;"></i>Impact
+                </a>
+            </li>
+            <li>
+                <a href="#casestudy" id="csestudyLink">
+                    <span class="material-symbols-outlined"> local_fire_department </span>Case Study
+                </a>
+            </li>
+            <li>
+                <a href="#faqs" id="faqsLink">
+                    <span class="material-symbols-outlined"> quiz </span>FAQs
+                </a>
+            </li>
+            <li>
+                <a href="#products" id="productsLink">
+                    <span class="material-symbols-outlined"> shopping_cart </span>Our Products
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <main>
+        <section id="home" style="background-color: #FFEBEE;">
+          <center>
+            <font face="Spantaran" color="#059927" style="font-size: 75px;">Wild </font>
+            <font face="Spantaran" color="orangered" style="font-size: 75px;">Fires</font>
+            <br>
+            <font face="ubuntu" size="4" id="blink"><i><b>Unplanned, Uncontrolled, and Unpredictable fire in a forest</b></i></font>
+            <br>
+            <hr width="15%" size="5px" color="dodgerblue" style="margin-top: 5px;">
+        </center>
+          <center style="margin-top: 50px;">
+            <img src="photo-collage.png" alt="Wild Fires" height="500px" />
+          </center>
+    
+          <div class="content-section" style="margin-top: 50px;">
+            <div class="text1" style="width: 450px; font-family: ubuntu; font-weight: bold;">
+              <p>Wildfires, also known as forest fires or wildland fires, are uncontrolled fires that spread rapidly through vegetation. They can occur in forests, grasslands, and other types of landscapes and are often fueled by dry conditions, high temperatures, and strong winds. Wildfires can be ignited by natural causes, such as lightning strikes, or by human activities, including campfires, discarded cigarettes, and arson.</p>
+            </div>
+            <div class="video1">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/5hghT1W33cY?si=BzQtf_R069-_NtzU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="article" style="display: flex; align-items: center; justify-content: center; margin-top: 70px; width: 90%;">                
+            <div class="container1-img" style="margin-left: 150px; padding-right: 75px;">
+                <img src="Wildfire Article.jpg" height="400px">  
+            </div> 
+            <div class="text">
+                <font face="Spantaran" size="7"><p style="width: 600px;">The Impacts of Climate Change on Wilfires</p></font>
+                <font size="4" face="ubuntu"><b>Article: </b></font>
+                <a href="https://wfca.com/wildfire-articles/wildfires-and-climate-change/" style="font-family: ubuntu; text-decoration: none;">Wildfires and Climate Change</a>
+            </div>
+          </div>  
+          <div class="text2" style="margin-top: 50px;">
+            <div class="res" style="margin-bottom: 25px;">
+              <font size="6" face="Spantaran" style="margin-left: 252px;">Resources</font>
+            </div>
+            <center>
+              <font face="ubuntu" size="5" color="red">For real time alerts and updates about current wildfires you can use following link:</font>
+            </center>
+          </div>
+            <div class="links1" style="margin-top: 10px;">
+            <font face="ubuntu" size="4" color="dodgerblue"><a href="https://firms.modaps.eosdis.nasa.gov/usfs/map/#d:24hrs;@-100.8,40.1,4.0z" style="text-decoration: none; color: rgb(20, 73, 125); margin-left: 252px; margin-top: 10px;"><b>Active Wildfire Map</b></a></font>
+            <br />
+            <font face="ubuntu" size="4" color="dodgerblue"><a href="https://www.nifc.gov/fire-information/nfn" style="text-decoration: none; color: rgb(20, 73, 125); margin-left: 252px; margin-top: 10px;"><b>National Fire News Page</b></a></font>
+            <br />
+            <font face="ubuntu" size="4" color="dodgerblue"><a href="https://www.fire.ca.gov/" style="text-decoration: none; color: rgb(20, 73, 125); margin-left: 252px; margin-top: 10px;"><b>Cal Fire</b></a></font>
+            <br />
+            <font face="ubuntu" size="4" color="dodgerblue"><a href="https://www.weather.gov/fire/" style="text-decoration: none; color: rgb(20, 73, 125); margin-left: 252px; margin-top: 10px;"><b>National Weather Service</b></a></font>
+            <br />
+          </div>
+          <div class="emergency" style="margin-top: 50px;">
+            <div class="res1">
+              <font size="5" face="Spantaran" color="red" style="margin-left: 252px;">Emergency Contacts</font>
+            </div>
+            <div class="contact1" style="margin-top: 15px; margin-left: 252px; margin-bottom: 50px;">
+              <font face="ubuntu" size="4"><b>1. Local Emergency Services: </b>Dial the emergency number of the country (for eg. 911 for USA and Canada, and 112 for India) for immediate emergency assistance.</font>
+              <br />
+              <font face="ubuntu" size="4"><b>2. Fire Department: </b>Contact your local fire department directly if you have their number.</font>
+              <br />
+              <font face="ubuntu" size="4"><b>3. Local Authorities: </b>County or city emergency management offices often provide up-to-date information on wildfires.</font>
+            </div>
+          </div>
+          <br />
+          <br />
+          <br />
+        </section>
+        <section id="causes" style="background-color: rgb(255, 218, 185); margin-top: 50px">
+          <div class="head" style="padding-top: 20px;">
+            <center>
+              <font face="Spantaran" size="7">Causes of Wildfires</font>
+            </center>
+            </div>
+            <div class="cardall" style="display: flex; align-items: center; justify-content: center; margin-top: 55px;">
+              <div class="card">
+                <font face="Spantaran" size="6">Natural Causes</font>
+                <br />
+                <font face="ubuntu" size="4">
+                  <p class="small-desc">
+                    <b>1. Lightning:</b>
+                    One of the most common natural causes. Lightning strikes can produce enough heat to ignite a fire, especially if the vegetation is dry.
+                  </p>
+                </font>
+                <br />
+                <font face="ubuntu" size="4">
+                  <p class="small-desc">
+                    <b>2. Volcanic Activity:</b>
+                    Lava and hot volcanic debris can start fires when they come into contact with vegetation.
+                  </p>
+                </font>
+                <br />
+                <font face="ubuntu" size="4">
+                  <p class="small-desc">
+                    <b>3. Spontaneous Combustion:</b>
+                    Under certain conditions, organic materials like leaves and wood can heat up and ignite spontaneously.
+                  </p>
+                </font>
+              </div>
+              <div class="card">
+                <font face="Spantaran" size="6">Human Causes</font>
+                <br />
+                <font face="ubuntu" size="4">
+                  <p class="small-desc">
+                    <b>1. Campfires:</b>
+                    Unattended or improperly extinguished campfires can easily spread and cause wildfires.
+                  </p>
+                </font>
+                <br />
+                <font face="ubuntu" size="4">
+                  <p class="small-desc">
+                    <b>2. Cigarettes:</b>
+                    Discarded cigarette butts can ignite dry vegetation, leading to wildfires.
+                  </p>
+                </font>
+                <br />
+                <font face="ubuntu" size="4">
+                  <p class="small-desc">
+                    <b>3. Arson:</b>
+                    Deliberately set fires are a significant cause of wildfires in some regions.
+                  </p>
+                </font>
+                <br />
+                <font face="ubuntu" size="4">
+                  <p class="small-desc">
+                    <b>3. Fireworks:</b>
+                    Fireworks can send sparks into dry vegetation, igniting fires.
+                  </p>
+                </font>
+              </div>
+              <div class="card">
+                   <font face="Spantaran" size="6">Contributing Factors</font>
+                  <br />
+                  <font face="ubuntu" size="4">
+                    <p class="small-desc">
+                      <b>1. Dry Conditions:</b>
+                      Extended periods of dry weather create conditions conducive to wildfires by drying out vegetation.
+                    </p>
+                  </font>
+                  <br />
+                  <font face="ubuntu" size="4">
+                    <p class="small-desc">
+                      <b>2. High Temperatures:</b>
+                      Heat waves can exacerbate the dryness of vegetation, making it more susceptible to ignition.
+                    </p>
+                  </font>
+                  <br />
+                  <font face="ubuntu" size="4">
+                    <p class="small-desc">
+                      <b>3. Low Humidity:</b>
+                      Low humidity levels dry out vegetation, increasing the likelihood of ignition and the rapid spread of fire.
+                    </p>
+                  </font>
+              </div>
+            </div>
+            <div class="link" style="width: 200px; margin-left: 220px; margin-top: 25px; background-color: #fff;">
+              <center>
+                <font face="ubuntu" size="5"><a href="https://wfca.com/wildfire-articles/what-causes-wildfires/#:~:text=The%20majority%20of%20wildfires%20are,lightning%20strikes%20and%20volcanic%20activity.">Learn More</a></font>
+              </center>
+            </div>
+            <div class="heading" style="margin-top: 50px;">
+              <center>
+                <font face="Spantaran" size="7">Wildfire Prevention</font>
+              </center>
+            </div>
+            <div class="cardall" style="display: flex; align-items: center; justify-content: center; margin-top: 75px;">
+              <div class="card1">
+                <font face="Spantaran" size="6">Personal Responsibility</font>
+                <br />
+                <font face="ubuntu" size="4">
+                  <p class="small-desc">
+                    <b>1. Properly Dispose of Cigarettes:</b>
+                       Never throw lit cigarettes on the ground. Use designated receptacles.
+                  </p>
+                  </font>
+                  <br />
+                  <font face="ubuntu" size="4">
+                    <p class="small-desc">
+                      <b>2. Fireworks:</b>
+                      Avoid using fireworks in fire-prone areas, especially during dry seasons.
+                    </p>
+                  </font>
+                  <br />
+                  <font face="ubuntu" size="4">
+                    <p class="small-desc">
+                      <b>3. Equipment Use:</b>
+                      Avoid using equipment that can generate sparks (chainsaws, mowers) during dry, windy conditions. Ensure vehicles and equipment have spark arrestors.
+                    </p>
+                  </font>
+                </div>
+                <div class="card1">
+                  <font face="Spantaran" size="6">Home Management</font>
+                  <br />
+                  <font face="ubuntu" size="4">
+                    <p class="small-desc">
+                      <b>1. Create Defensible Space:</b>
+                      Maintain a defensible space around your home by clearing dry vegetation, leaves, and other flammable materials.
+                    </p>
+                  </font>
+                  <br />
+                  <font face="ubuntu" size="4">
+                    <p class="small-desc">
+                      <b>2. Use Fire-Resistant Landscaping</b>
+                      Plant fire-resistant shrubs and trees. Keep grass and vegetation well-watered and trimmed.
+                    </p>
+                  </font>
+                  <br />
+                  <font face="ubuntu" size="4">
+                    <p class="small-desc">
+                      <b>3. Fire-Resistant Building Materials:</b>
+                      Use fire-resistant materials for roofing, siding, and decking when building or renovating homes.
+                    </p>
+                  </font>
+                  <br />
+                  
+                </div>
+                <div class="card1">
+                  <font face="Spantaran" size="6">Community Action</font>
+                <br />
+                <font face="ubuntu" size="4">
+                  <p class="small-desc">
+                    <b>1. Community Wildfire Protection Plans (CWPP):</b>
+                    Participate in or support the development of a CWPP in your community. This plan outlines strategies for reducing wildfire risks.
+                  </p>
+                </font>
+                <br />
+                <font face="ubuntu" size="4">
+                  <p class="small-desc">
+                    <b>2. Firewise USA Program:</b>
+                    Engage in the Firewise USA program, which helps communities reduce wildfire risks through cooperative planning and action.
+                  </p>
+                </font>
+                <br />
+                <font face="ubuntu" size="4">
+                  <p class="small-desc">
+                    <b>3. Local Ordinances:</b>
+                    Support and adhere to local fire ordinances and regulations.
+                  </p>
+                </font>
+                  
+                </div>
+              </div>
+              <div class="link" style="width: 200px; margin-left: 220px; margin-top: 25px; background-color: #fff;">
+                <center>
+                  <font face="ubuntu" size="5"><a href="https://portal.ct.gov/deep/forestry/forest-fire/forest-fire-prevention-tips">Learn More</a></font>
+                </center>
+             </div>
+              <br />
+              <br />
+        </section>
+        <section id="impact" style="margin-top: 50px; background-color: #D6C7C2; margin-top: 50px;">
+          <div class="head" style="padding-top: 20px; margin-bottom: 50px;">
+            <center>
+              <font face="Spantaran" size="7">Impacts of Wildfires</font>
+            </center>
+          </div>
+          <div class="video" style="margin-top: 50px;">
+            <center>
+              <iframe width="760" height="415" src="https://www.youtube.com/embed/aZ6LVDL6WB0?si=-gUyWM40sV29uwW1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </center>
+          </div>
+          <div class="carf" style="display: flex;">
+          <div class="div1" style="width: 25%; background-color: #9B6A6C; margin-top: 100px;">
+            <div class="h" style="margin-top: 7px; margin-bottom: 7px; margin-left: 7px;">
+              <font face="ubuntu" color="white" size="5"><b style="text-align: justify;">Environmental Impacts</b></font>
+            </div>
+            <div class="al" style="margin-left: 8px;">
+            <font face="ubuntu" size="4"><b>1. Loss of Biodiversity: </b></font>
+            <br />
+            <div class="ms" style="margin-top: 8px;">
+              <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Wildfires can destroy habitats and kill wildlife, leading to a loss of biodiversity. Some species may become endangered or extinct as a result.</font>
+            </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px;">
+              <font face="ubuntu" size="4"><b>2. Forest Degradation: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Fires can damage forests, reducing their ability to sequester carbon, which contributes to climate change.</font>
+              </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px;">
+              <font face="ubuntu" size="4"><b>3. Air and Water Quality: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Smoke from wildfires can pollute the air with particulate matter and toxic gases. Ash and debris can also contaminate water sources, affecting both ecosystems and human water supplies.</font>
+              </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px; margin-bottom: 10px;">
+              <font face="ubuntu" size="4"><b>4. Soil Erosion: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">The removal of vegetation by fire can lead to increased soil erosion, which can degrade land quality and lead to sedimentation in rivers and lakes.</font>
+              </div>
+            </div>
+          </div>
+          <!--1-->
+          <div class="div1" style="width: 25%; background-color: #586A6A; margin-top: 100px; height: 530px;">
+            <div class="h" style="margin-top: 7px; margin-bottom: 7px; margin-left: 7px;">
+              <font face="ubuntu" color="white" size="5"><b style="text-align: justify;">Economic Impact</b></font>
+            </div>
+            <div class="al" style="margin-left: 8px;">
+            <font face="ubuntu" size="4"><b>1. Property Damage: </b></font>
+            <br />
+            <div class="ms" style="margin-top: 8px;">
+              <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Wildfires can destroy homes, businesses, and infrastructure, leading to significant financial losses.</font>
+            </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px;">
+              <font face="ubuntu" size="4"><b>2. Firefighting Costs: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">The expenses related to fighting fires, including manpower, equipment, and resources, can be substantial.</font>
+              </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px;">
+              <font face="ubuntu" size="4"><b>3. Impact on Industries: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Agriculture, tourism, and forestry industries can suffer from the effects of wildfires, leading to economic downturns in affected areas.</font>
+              </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px; margin-bottom: 10px;">
+              <font face="ubuntu" size="4"><b>4. Insurance Costs: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Increased risk of wildfires can lead to higher insurance premiums and reduced availability of coverage in high-risk areas.</font>
+              </div>
+            </div>
+          </div>
+          <!--2-->
+          <div class="div1" style="width: 25%; background-color: #7A7000; margin-top: 100px; height: 530px;">
+            <div class="h" style="margin-top: 7px; margin-bottom: 7px; margin-left: 7px;">
+              <font face="ubuntu" color="white" size="5"><b style="text-align: justify;">Social Impacts</b></font>
+            </div>
+            <div class="al" style="margin-left: 8px;">
+            <font face="ubuntu" size="4"><b>1. Displacement: </b></font>
+            <br />
+            <div class="ms" style="margin-top: 8px;">
+              <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Wildfires can force communities to evacuate, leading to temporary or permanent displacement of residents.</font>
+            </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px;">
+              <font face="ubuntu" size="4"><b>2. Cummunity Disruption: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">The destruction of homes and infrastructure can disrupt community cohesion and lead to long-term social challenges.</font>
+              </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px;">
+              <font face="ubuntu" size="4"><b>3. Loss of Cultural Sites: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Fires can damage or destroy culturally significant sites, leading to a loss of heritage and identity for affected communities.</font>
+              </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px; margin-bottom: 10px;">
+              <font face="ubuntu" size="4"><b>4. Public Services Strain: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">The resources needed to respond to wildfires can strain public services, impacting other areas such as healthcare and law enforcement.</font>
+              </div>
+            </div>
+          </div>
+          <!--3-->
+          <div class="div1" style="width: 25%; background-color: #A35C00; margin-top: 100px; height: 530px;">
+            <div class="h" style="margin-top: 7px; margin-bottom: 7px; margin-left: 7px;">
+              <font face="ubuntu" color="white" size="5"><b style="text-align: justify;">Health Impacts</b></font>
+            </div>
+            <div class="al" style="margin-left: 8px;">
+            <font face="ubuntu" size="4"><b>1. Respiratory Issues: </b></font>
+            <br />
+            <div class="ms" style="margin-top: 8px;">
+              <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Exposure to smoke and particulate matter can cause respiratory problems, exacerbate asthma, and reduce lung function.</font>
+            </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px;">
+              <font face="ubuntu" size="4"><b>2. Forest Degradation: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Fires can damage forests, reducing their ability to sequester carbon, which contributes to climate change.</font>
+              </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px;">
+              <font face="ubuntu" size="4"><b>3. Heart-Related Illness: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">The heat cause direct injuries and deaths due to burns, accidents during evacuations, or respiratory complications.</font>
+              </div>
+            </div>
+            <div class="al" style="margin-left: 8px; margin-top: 10px; margin-bottom: 10px;">
+              <font face="ubuntu" size="4"><b>4. Injuries and Fatalities: </b></font>
+              <br />
+              <div class="ms" style="margin-top: 8px;">
+                <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Wildfires can cause direct injuries and deaths due to burns, accidents during evacuations, or respiratory complications.</font>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </section>
+        <section id="casestudy" style="background-color: #D9E5E8; margin-top: 50px;">
+          <div id="heading" style="padding-top: 20px;">
+            <center>
+              <font face="Spantaran" size="7" style="padding-top: 20px;">Wildfire Disasteres Around the World:</font>
+            </center>
+          </div>
+          <div class="car" style="display: flex; align-items: center; justify-content: center">
+          <div class="div1" style="width: 30%; background-color: #392F5A; margin-top: 100px; height: 531px; width: 450px; margin-left: 5px; padding-bottom: 50px; border-radius: 34px; margin-right: 50px;">
+            <div class="h" style="margin-top: -6px; padding-top: 23pt; border-top-right-radius: 10%; border-top-left-radius: 10%; margin-bottom: 15px;">
+              <center>
+                <font face="ubuntu" color="white" size="5"><b style="text-align: justify;">The Australian Bushfires (2019-2020)</b></font>
+              </center>
+            </div>
+            <div class="al" style="margin-left: 8px; background-color: #FF8811; height: 233px; margin-right: 8px; border-radius: 31.5px; display: flex; align-items: center; justify-content: center;">
+                <br />
+                <div class="ms" style="margin-top: 8px; width: 375px;">
+                  <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">This series of fires burned an estimated 18.6 million hectares, destroyed over 5,900 buildings, and resulted in at least 34 deaths. It had a profound impact on wildlife, with approximately 3 billion animals affected. The fires were fueled by prolonged drought, high temperatures, and strong winds.</font>
+                </div>
+            </div>
+            <center>
+              <iframe width="360" height="205" src="https://www.youtube.com/embed/LFadvnpYEJg?si=41DK6VyU3IMDZsN5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin-top: 15px;"></iframe>          </div>
+          <div class="div1" style="width: 30%; background-color: #392F5A; margin-top: 100px; height: 531px; width: 450px; margin-left: 50px; padding-bottom: 50px; border-radius: 34px;">
+            <div class="h" style="margin-top: -6px; padding-top: 23pt; border-top-right-radius: 10%; border-top-left-radius: 10%; margin-bottom: 15px;">
+              <center>
+                <font face="ubuntu" color="white" size="5"><b style="text-align: justify;">The Camp Fire(2019)</b></font>
+              </center>
+            </div>
+            <div class="al" style="margin-left: 8px; background-color: #FF8811; height: 233px; margin-right: 8px; border-radius: 31.5px; display: flex; align-items: center; justify-content: center;">
+                <br />
+                <div class="ms" style="margin-top: 8px; width: 375px;">
+                  <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Occurring in California, USA, the Camp Fire is the deadliest and most destructive wildfire in California's history. It burned 153,336 acres, destroyed over 18,000 structures, and caused 85 civilian fatalities. The fire was primarily sparked by faulty electric transmission lines owned by Pacific Gas and Electric Company.</font>
+                </div>
+            </div>
+            <center>
+              <iframe width="360" height="205" src="https://www.youtube.com/embed/puigadZk_Uw?si=DYrWxMhXivy4wNcC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin-top: 15px;"></iframe>
+            </center>
+            </div>
+          </div>
+          <div class="car" style="display: flex; align-items: center; justify-content: center">
+            <div class="div1" style="width: 30%; background-color: #392F5A; margin-top: 100px; height: 531px; width: 450px; margin-left: 5px; padding-bottom: 50px; border-radius: 34px; margin-right: 50px;">
+              <div class="h" style="margin-top: -6px; padding-top: 23pt; border-top-right-radius: 10%; border-top-left-radius: 10%; margin-bottom: 15px;">
+                <center>
+                  <font face="ubuntu" color="white" size="5"><b style="text-align: justify;">The Chile Fires (2017)</b></font>
+                </center>
+              </div>
+              <div class="al" style="margin-left: 8px; background-color: #FF8811; height: 233px; margin-right: 8px; border-radius: 31.5px; display: flex; align-items: center; justify-content: center;">
+                  <br />
+                  <div class="ms" style="margin-top: 8px; width: 375px;">
+                    <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">These fires burned over 1,467,000 acres, causing significant damage to homes, farmland, and forests. It was the worst wildfire season in Chile's history, driven by extremely high temperatures and prolonged drought conditions.</font>
+                  </div>
+              </div>
+                <center>
+                  <iframe width="360" height="205" src="https://www.youtube.com/embed/0kU9eBFAkP4?si=0m9OPhCEzS8cMWmQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin-top: 15px;"></iframe>                
+                </center>
+            </div>
+            <div class="div1" style="width: 30%; background-color: #392F5A; margin-top: 100px; height: 531px; width: 450px; margin-left: 50px; padding-bottom: 50px; border-radius: 34px;">
+              <div class="h" style="margin-top: -6px; padding-top: 23pt; border-top-right-radius: 10%; border-top-left-radius: 10%; margin-bottom: 15px;">
+                <center>
+                  <font face="ubuntu" color="white" size="5"><b style="text-align: justify;">The Fort McMurray Wildfire (2016)</b></font>
+                </center>
+              </div>
+              <div class="al" style="margin-left: 8px; background-color: #FF8811; height: 233px; margin-right: 8px; border-radius: 31.5px; display: flex; align-items: center; justify-content: center;">
+                  <br />
+                  <div class="ms" style="margin-top: 8px; width: 375px;">
+                    <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">In Alberta, Canada, this fire forced the evacuation of nearly 90,000 residents of Fort McMurray and burned about 590,000 hectares. It stands as one of the costliest disasters in Canadian history, with its causes likely linked to human activity and dry conditions.</font>
+                  </div>
+              </div>
+              <center>
+                <iframe width="360" height="205" src="https://www.youtube.com/embed/iTEG8vBQDoE?si=rSrl8ntlucGYCNAZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin-top: 15px;"></iframe>
+              </center>
+            </div>
+            </div>
+            <div class="ve" style=" display: flex; align-items: center; justify-content: center; margin-top: 40px;">
+            </div>
+            <div class="car" style="display: flex; align-items: center; justify-content: center">
+              <div class="div1" style="width: 30%; background-color: #392F5A; margin-top: 100px; height: 531px; width: 450px; margin-left: 5px; padding-bottom: 50px; border-radius: 34px; margin-right: 50px;">
+                <div class="h" style="margin-top: -6px; padding-top: 23pt; border-top-right-radius: 10%; border-top-left-radius: 10%; margin-bottom: 15px;">
+                  <center>
+                    <font face="ubuntu" color="white" size="5"><b style="text-align: justify;">The Amazon Rainforest Fires (2019)</b></font>
+                  </center>
+                </div>
+                <div class="al" style="margin-left: 8px; background-color: #FF8811; height: 233px; margin-right: 8px; border-radius: 31.5px; display: flex; align-items: center; justify-content: center;">
+                    <br />
+                    <div class="ms" style="margin-top: 8px; width: 375px;">
+                      <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Often referred to as the "lungs of the Earth," the Amazon experienced an alarming increase in wildfires in 2019. The fires, many of which were set intentionally to clear land for agriculture, destroyed large areas of rainforest, contributing to significant biodiversity loss and impacting indigenous communities. The fires drew international concern due to the Amazon's critical role in carbon storage and climate regulation.</font>
+                    </div>
+                </div>
+                <center>
+                  <iframe width="360" height="205" src="https://www.youtube.com/embed/L9L14oqBVZ8?si=2lfY-2Gxjjtxrflv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin-top: 15px;"></iframe>                </center>
+              </div>
+              <div class="div1" style="width: 30%; background-color: #392F5A; margin-top: 100px; height: 531px; width: 450px; margin-left: 50px; padding-bottom: 50px; border-radius: 34px;">
+                <div class="h" style="margin-top: -6px; padding-top: 23pt; border-top-right-radius: 10%; border-top-left-radius: 10%; margin-bottom: 15px;">
+                  <center>
+                    <font face="ubuntu" color="white" size="5"><b style="text-align: justify;">Uttarakhand Wildfires</b></font>
+                  </center>
+                </div>
+                <div class="al" style="margin-left: 8px; background-color: #FF8811; height: 233px; margin-right: 8px; border-radius: 31.5px; display: flex; align-items: center; justify-content: center;">
+                    <br />
+                    <div class="ms" style="margin-top: 8px; width: 375px;">
+                      <font face="ubuntu" size="4" style="margin-top: 5px; text-align: justify;">Uttarakhand experienced severe wildfires in 2016, burning approximately 4,000 hectares (nearly 10,000 acres) of forest land. The fires caused significant environmental damage, including loss of wildlife habitat and degraded air quality, posing health risks. Unusually dry conditions, high temperatures, strong winds, and human activities such as illegal logging and land clearing contributed to the fires' spread.</font>
+                    </div>
+                </div>
+                <center>
+                  <iframe width="360" height="205" src="https://www.youtube.com/embed/GbTIQDo-7iY?si=F_2Rcy-vgSfAuJ-h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin-top: 15px;"></iframe>              
+                </center>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br />
+        </section>
+        <section id="faqs" style="background-color: #d0fdca; margin-top: 50px;">
+          <div class="heading" style="padding: 20px;">
+            <center>
+              <font face="Spantaran" size="7">Wildfires- FAQs And Facts</font>
+            </center>
+          </div>
+          <br />
+          <br />
+          <div class="all" style="display: flex;">
+          <div class="faqs" style="width: 50%; margin-left: 25px; text-align: justify; margin-right: 25px;">
+            <font face="ubuntu" size="5"><b>Q. Why is wildfire smoke bad for me?</b></font>
+            <br />
+            <font face="ubuntu" size="4">Smoke is a mixture of gases and fine particles (particulate) released when things burn. In
+              addition to burning your eyes, these fine particles and gases can be inhaled deep into your
+              lungs. This makes it harder to breathe and may worsen other chronic health conditions such as
+              asthma or heart disease. 
+              <br />
+              Fortunately, most people who are exposed to smoke will not have lasting health problems. How
+              much and how long you are exposed to the smoke, as well as your age and health status, helps
+              determine whether or not you will experience smoke-related problems.
+              <br />
+              If you are experiencing serious medical problems for any reason, seek medical treatment
+              immediately.
+           </font>
+           <br />
+           <br />
+           <font face="ubuntu" size="5"><b>Q. What chemicals are in smoke from wildfires?</b></font>
+           <br />
+           <font face="ubuntu" size="4">Wildfire smoke contains carbon monoxide, a colorless, odorless and toxic gas. Firefighters
+            working near the fire are at greatest risk for high doses of carbon monoxide. Areas even a few
+            hundred yards downwind of the fire where there are high particulate smoke levels typically
+            don’t have high levels of carbon monoxide. Signs of high carbon monoxide levels in the blood
+            include headaches, dizziness, nausea and decreased mental functioning.
+            <br />
+            Wildfire smoke contains other chemicals,many of which cause irritation to eyes, noses and
+            throats. Find more detailed information on chemicals found in smoke in this publication from
+            the Washington State Department of Ecology.</font>
+            <br />
+           <br />
+           <font face="ubuntu" size="5"><b>Q. What other natural disasters happen with wildfires?</b></font>
+           <br />
+           <font face="ubuntu" size="4">
+            The aftermath of a wildfire can be as disastrous, if not more so, than the fire. A particularly
+            destructive fire burns away plants and trees that prevent erosion. If heavy rains occur after such
+            a fire, landslides, ash floes, and flash floods can occur. This can result in property damage
+            outside the immediate fire area, and can affect the water quality of streams, rivers and lakes.</font>
+            <br />
+           <br />
+           <font face="ubuntu" size="5"><b>Q. What can be done to reduce wildfires and/or damage?</b></font>
+           <br />
+           <font face="ubuntu" size="4">
+            Several methods, including so-called prescribed burning and thinning of trees, are being used in
+            California and elsewhere to remove the buildup of vegetation that could become kindling for
+            wildfires.
+            <br />
+            Keeley says we can't prevent wildfires and so should instead "adapt our lifestyle to them." He
+            added, "What these fires tell us is that we need to recognize on these landscapes we're never
+            going to get rid of fire. We cannot eliminate these fires."
+            <br />
+            He suggests urban planning can help to reduce the spread and damage caused by wildfires. For
+            instance, some lawn vegetation such as palm trees and eucalyptus make for efficient wildfire
+            fuel, as these plants hold on to their dead biomass longer than other plants.
+            <br />
+            Other measures: Some major wildfires have been started by downed power lines. Keeley
+            suggests burying the lines underground. He added that small roadside barriers could reduce the
+            spread of wildfires, which often get their start along roadsides.
+           </font>
+           <br />
+           <br />
+           <font face="ubuntu" size="5"><b>Q. At what temperatures do forest fires burn?</b></font>
+           <br />
+           <font face="ubuntu" size="4">
+            An average surface fire on the forest floor might have flames reaching 1 meter in height and can
+            reach temperatures of 800°C (1,472° F) or more. Under extreme conditions a fire can give off
+            10,000 kilowatts or more per meter of fire front. This would mean flame heights of 50 meters or
+            more and flame temperatures exceeding 1200°C (2,192° F). 
+            </font>
+            <br />
+           <br />
+           <font face="ubuntu" size="5"><b>Q. What is a “prescribed fire”? </b></font>
+           <br />
+           <font face="ubuntu" size="4">
+            These are sometimes called prescribed burns, or controlled burns, but the term that most land
+            management agencies use is “prescribed fire”. It is the process of treating land by using carefully
+            and skillfully applied fire to burn some of the vegetation. When applied correctly by
+            professionals, it is only done after writing a prescribed fire plan that addresses the specific
+            characteristics of the tract of land being treated. It will include a “prescription” that requires
+            that many different weather, environmental, and vegetation factors be within carefully defined
+            parameters. The plan will also specify how the fire will be applied, by whom, and what fire
+            control people and equipment must be on scene before the first match is lit. The reasons for
+            using prescribed fire can be many, but they can often include: to replicate natural conditions,
+            restore fire to the landscape, reduce unnaturally high accumulations of vegetation due to fire
+            exclusion, reduce the fire hazard around structures or communities, enhance the habitat of
+            animals, and control exotic species. The smoke from a prescribed fire can be a nuisance, but it is
+            much less than would be created if the same area burned as an unplanned and uncontrolled
+            wildfire. Fire is a natural part of most ecosystems. It is not a question of IF the land will burn, but
+            WHEN and under what conditions…controlled, or uncontrolled.
+            <br />
+            One thing that can be confusing is that the media usually uses the term “controlled burn”, which
+            for them can be anything from someone burning trash in their back yard to a federal agency
+            conducting a 5,000-acre prescribed fire that has been planned for four years.
+            </font>
+            <br />
+           <br />
+           <font face="ubuntu" size="5"><b>Q. How can I obtain certification so that I can use prescribed fire on my own land?</b></font>
+           <br />
+           <font face="ubuntu" size="4">
+            Check with your state forestry or wildland fire agency and ask if they have a program for land
+            owners to use prescribed fire. For example, Texas has a law, HB 2599, that guarantees
+            landowners the right to burn on their own property, then sets up a prescribed burn manager
+            certification system administered by the Texas Department of Agriculture under the direction of
+            the Prescribed Burning Board. For a fire department employee to become qualified as a
+            prescribed fire burn boss requires many years of experience and training. There are numerous
+            prerequisite positions and courses that are required. As they move up from one position to the
+            next, the firefighter must document satisfactory performance on a fire or prescribed fire in each
+            position. It can take 10 to 20 years of full time employment as a firefighter to move up from
+            being a firefighter to a prescribed fire burn boss. 
+            <br />
+            Keep in mind that the use of fire as a tool requires a great deal of knowledge and experience,
+            and it is as much an art as a science. Many things can go wrong that can have catastrophic
+            consequences. Anyone setting fire to the landscape, a private landowner or a government
+            employee, should have liability insurance.
+            </font>
+            <br />
+           <br />
+           <font face="ubuntu" size="5"><b>Q. How do I keep my home from burning in a wildfire?</b></font>
+           <br />
+           <font face="ubuntu" size="4">
+            Briefly, your home needs to be “fire safe”. That is, the flammable vegetation within 100 feet of
+            the structures must be reduced to the point where fire can not easily spread from the natural
+            vegetation to your home. And the structures must be of fire-resistant materials and
+            design. <a href="https://www.nfpa.org/Education-and-Research/Wildfire/Firewise-USA">Firewise.org</a> has much more information.
+            </font>
+            <br />
+           <br />
+           <font face="ubuntu" size="5"><b>Q. What types of airplanes and helicopters are used to put out fires?</b></font>
+           <br />
+           <font face="ubuntu" size="4">
+            Well, first, aircraft don’t put out fires. The best they can do is to slow down a fire to allow
+            firefighters on the ground to get in close and actually put out the fire by applying water from
+            hoses or to physically cut the vegetation away at the perimeter of the fire with hand tools so the
+            fire runs out of fuel to burn.
+            </font>
+            <br />
+            <br />
+            <font face="ubuntu" size="5"><b>Q. What is defensible space? And how do I create a defensible space?</b></font>
+            <br />
+            <font face="ubuntu" size="4">
+              Defensible space is an area at least 30 feet of lean, clean and green space surrounding your
+              home. This space gives firefighters room to fight fires. Make your yard firewise by pruning
+              shrubs and tree branches within 15 feet of your chimney or stovepipe. Remove dead tree
+              branches that extend over the roof. Make your yard clean by raking leaves and removing dead
+              tree limbs and twigs. Stack firewood at least 100 feet away from your home. Make your yard
+              green by removing flammable vegetation and replacing it with fire-resistant plants.
+             </font>
+          </div>
+          <img src="10-Facts-About-Wildfire-WFCA.png.webp" width="50%" height="100%">
+         </div>
+         <br />
+         <br />
+         <br />
+         <br />
+        </section>
+        <section id="products" style="background-color: #CCCACE; margin-bottom: 30px; margin-top: 50px;">
+          <div class="heading" style="padding-top: 20px;">
+            <center>
+              <font face="Spantaran" size="7">Our Products</font>
+            </center>
+          </div>
+          <div class="count" style="margin-left: 250px; margin-top: 40px;">
+            <font face="ubuntu" size="5"><b>All Products</b></font>
+            <br />
+            <font face="ubuntu" size="4" color="grey"><b>3 Items</b></font>
+          </div>
+          <div class="cardall" style="display: flex; justify-content: center; margin-top: 50px; gap: 75px;">
+            <div class="card45">
+                <img src="PREVENT.png" class="card-img">
+            </div>
+            <div class="card46">
+                <img src="PREVENT (1).png" class="card-img">
+            </div>
+            <div class="card47">
+                <img src="Untitled design (3).png" class="card-img">
+            </div>
+        </div>
+        <div class="button">
+          <button class="Cart" onclick="changeText(this)">Add to Cart</button>
+          <button class="Cart" onclick="changeText(this)">Add to Cart</button>
+          <button class="Cart" onclick="changeText(this)">Add to Cart</button>
+        </div>
+        <br />
+        <br />
+        <br />
+        </section>
+    </main>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const contactForm = document.getElementById('contactForm');
+
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Optionally, you can perform form validation here before clearing
+        // Example: alert('Form submitted!');
+
+        // Clear the form fields
+        contactForm.reset();
+    });
+});
+
+
+        function changeText(button) {
+            button.textContent = "Added!";
+            setTimeout(function() {
+                button.textContent = "Add to Cart";
+            }, 1500);
+        }
+     document.addEventListener("DOMContentLoaded", function() {
+    // Smooth scrolling effect for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Function to remove active class from all links
+    function removeActiveClassFromLinks() {
+        const links = document.querySelectorAll(".sidebar-links a");
+        links.forEach(link => {
+            link.classList.remove("active");
+        });
+    }
+
+    // Update active link based on scroll position
+    const sections = document.querySelectorAll("section");
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 60 && window.pageYOffset < sectionTop + sectionHeight - 60) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        removeActiveClassFromLinks();
+        if (current) {
+            document.querySelector(`.sidebar-links a[href="#${current}"]`).classList.add("active");
+        }
+    });
+
+    // Initial check for active link on page load
+    window.dispatchEvent(new Event('scroll'));
+});
+
+    </script>
+
+    <footer style="background-color: #1d1b1b;">
+      <div class="heading" style="padding-top: 20px;">
+        <center>
+          <font face="Spantaran" size="7" color="white">Get In Touch</font>
+        </center>
+      </div>
+      <div class="bit" style="margin-top: 20px;">
+        <center>
+          <font face="ubuntu" color="white" size="6">We'd <span class="material-symbols-outlined" style="font-size: 35px;">
+            favorite
+            </span> to help!</font>
+        </center>
+      </div>
+      <div class="con" style="display: flex;">
+        <div class="contact-container" style="margin-left: 175px;">
+          <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <div class="form-group">
+              <input type="hidden" name="access_key" value="eb691f28-c240-4a44-a126-da69455baf1d">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email" style="margin-top: 10px;">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message" style="margin-top: 10px;">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <div class="icon" style="width: 50px; color: #fff; margin-top: 70px; margin-left: 50px;">
+          <center>
+            <span class="material-symbols-outlined">
+              location_on
+              </span>
+            <br />
+            <br />
+            <br />
+            <br />
+            <span class="material-symbols-outlined">
+              call
+              </span>
+            <br />
+            <br />
+            <br />
+            <br />
+            <span class="material-symbols-outlined">
+              mail
+              </span>
+          </center>
+        </div>
+        <div class="information" style="color: #ffffff; margin-top: 50px; margin-left: 60px; width: 500px;">
+          <center>
+            <br />
+            <font face="ubuntu" size="4" color="white">Tahsildar quarter, Near Anand Traders, Muktainagar 425306, District Jalgaon, Maharashtra, India</font>
+            <br />
+            <br />
+            <br />
+            <br />
+            <font face="ubuntu" size="4" color="white">+91 97675 34848</font>
+            <br />
+            <br />
+            <br />
+            <br />
+            <font face="ubuntu" size="4" color="white">rwakhare08@gmail.com</font>
+            <br />
+            <br />
+          </center>
+          <hr size="4px" width="100%" color="white" style="margin-top: 10px;">
+          <div class="icons" style="margin-left: 185px; margin-top: 20px;">
+            <a href="https://www.facebook.com/login.php/" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/2048px-Facebook_icon.svg.png" width="30" height="30" style="margin-right: 5px;"></a>
+            <a href="https://in.linkedin.com/"><img src="https://static-00.iconduck.com/assets.00/linkedin-icon-2048x2048-ya5g47j2.png" width="30" height="30" style="margin-right: 5px; margin-left: 5px;"></a>
+            <a href="https://www.instagram.com/" ><img src="images/instagram (1).png" width="30" height="30" style="margin-left: 5px;"></a>
+            <a href="https://www.youtube.com/channel/UCZWcL06UxQpd7lJXPzpAdVQ" ><img src="https://www.freeiconspng.com/thumbs/youtube-logo-png/hd-youtube-logo-png-transparent-background-20.png" width="30" height="30" style="margin-left: 5px;"></a>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <center>
+        <font face="ubuntu" size="4" color="white">&copy;2024 by Raghav
+          <br />
+          Made with 🔥 by Raghav Wakhare
+        </font>
+      </center>
+    <br />
+    <br />
+    </footer>
+</body>
+</html>
